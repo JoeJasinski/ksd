@@ -49,11 +49,7 @@ def evaluate_document(k8s_yaml_document: Dict) -> Dict:
     return k8s_yaml_document
 
 
-def main():
-    input_str = ""
-    for line in fileinput.input():
-        input_str += line
-
+def decoder(input_str: str) -> str:
     try:
         yaml_docs = yaml.safe_load_all(input_str)
     except ValueError as exc:
@@ -67,9 +63,15 @@ def main():
     for yaml_doc in yaml_docs:
         new_k8s_docs.append(evaluate_document(yaml_doc))
 
-    out_str = yaml.dump_all(new_k8s_docs, default_flow_style=False)
-    print(out_str)
+    return yaml.dump_all(new_k8s_docs, default_flow_style=False)
 
+
+def main() -> None:
+    input_str = ""
+    for line in fileinput.input():
+        input_str += line
+    output_str = decoder(input_str)
+    print(output_str)
 
 if __name__ == "__main__":
     main()
