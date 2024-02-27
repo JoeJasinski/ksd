@@ -11,6 +11,11 @@ setup(
     install_requires=[
         'PyYAML>=5.0',
     ],
+    extras_require = {
+        'tests': [
+            'pytest>=8',
+        ],
+    },
     entry_points={
         'console_scripts': [
             'ksd = ksd.ksd:main',

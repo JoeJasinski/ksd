@@ -2,9 +2,13 @@
 
 Read base64 encoded Kubernetes secrets without getting in your way.
 
+Kubernetes secrets resources base64 encode the secret values. It is often
+useful to view the decoded values for those secrets in place. This tool
+offers a useful means to do that. 
+
 ## Features
 
-- allows you to read one or more 
+- allows you to read one or more Secrets
 - works with individual secrets, lists of secrets, and multiple yaml docs
 - simple auditable Python source code
 
@@ -15,7 +19,7 @@ TDB
 ## Quick Example
 
 ```bash
-$ kubectl  get secret -n mynamespace -o yaml mysecret | ksd
+$ kubectl get secret -n mynamespace -o yaml mysecret | ksd
 ```
 ```yaml
 apiVersion: v1
@@ -36,23 +40,48 @@ type: Opaque
 
 ## Detailed Usage
 
-Get single secret as YAML
+Get help
+
+```bash
+ksd --help
+```
+
+Get single secret as YAML and decode as YAML
 
 ```bash
 kubectl get secret -o yaml mysecret | ksd 
 ```
 
-Get multiple secrets as YAML
+Get single secret as YAML and decode as JSON
+
+```bash
+kubectl get secret -o yaml mysecret | ksd -f json
+```
+
+Get multiple secrets as YAML and decode as YAML
 
 ```bash
 kubectl get secret -o yaml  | ksd
 ```
 
-Get secrets as JSON
+Get multiple secrets as YAML and decode as JSON
+
+```bash
+kubectl get secret -o yaml  | ksd -f json
+```
+
+Get secrets as JSON and decode as YAML
 
 ```bash
 kubectl  get secret -o json | ksd
 ```
+
+Get secrets as JSON and decode as JSON
+
+```bash
+kubectl  get secret -o json | ksd -f json
+```
+
 
 Use k8s flags as normal
 
@@ -84,10 +113,14 @@ cat secrets.yaml | ksd
 
 ## Inspired by
 
-I really like this project below, as it does exaclty this. 
-However, before I install this on my corporate laptop,
-I wanted something that I could easily audit the source code for,
-since I cannot really do that with a Go binary. Python makes that
-easier to do.
+There are several projects with a similar name and purpose. However, they
+are written in Go and distribute compiled binaries. I prefer to use a version
+of this tool written in Python, for which the source code is auditable. 
 
-https://github.com/gechr/ksd
+
+## Tests
+
+```bash
+pip install -e .[tests]
+pytest -vvv tests/
+```
