@@ -14,7 +14,17 @@ offers a useful means to do that.
 
 ### Install
 
-TDB
+Install with pip
+
+```bash
+pip install ksd
+```
+
+Install with pipx
+
+```bash
+pipx install ksd
+```
 
 ## Quick Example
 

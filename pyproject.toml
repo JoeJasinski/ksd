@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ksd"
-version = "0.1.0"
+version = "0.1.1"
 description = "Utility for decoding python secrets"
 readme = "README.md"
 authors = [{ name = "Joe Jasinski", email = "joe.jasinski@gmail.com" }]
