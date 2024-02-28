@@ -1,4 +1,4 @@
-# Easily Read kubernetes Secrets
+# Easily Read Kubernetes Secrets
 
 Read base64 encoded Kubernetes secrets without getting in your way.
 

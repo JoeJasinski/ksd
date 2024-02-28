@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ksd"
-version = "0.1.2"
-description = "Utility for decoding python secrets"
+version = "0.1.3"
+description = "Utility for decoding Kubernetes secret resources"
 readme = "README.md"
 authors = [{ name = "Joe Jasinski", email = "joe.jasinski@gmail.com" }]
 license = { file = "LICENSE" }
